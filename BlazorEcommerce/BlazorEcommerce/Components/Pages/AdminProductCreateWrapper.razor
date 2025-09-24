@@ -1,0 +1,14 @@
+@page "/admin/products/create"
+@page "/admin/products/edit/{ProductId:int?}"
+
+@using BlazorEcommerce.Client.Pages
+@layout BlazorEcommerce.Layout.DashboardLayout
+
+@code {
+    [Parameter]
+    public int? ProductId { get; set; }
+}
+
+<section class="w-[85%] mx-auto mt-6">
+    <AdminCreateProduct ProductId="ProductId" />
+</section>

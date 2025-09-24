@@ -1,0 +1,28 @@
+@page "/ordersuccess/{Id:int}"
+@inject NavigationManager Navigation
+
+@rendermode InteractiveWebAssembly
+
+<div class="h-[80vh] flex flex-col justify-center items-center text-center px-6">
+    <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-10 max-w-xl w-full">
+        <div class="text-green-600 text-5xl mb-4">✔️</div>
+        <h1 class="text-3xl font-semibold tracking-tight mb-2">Thank You for Your Order</h1>
+        <p class="text-gray-600 text-lg mb-6">
+            Your order number is <span class="font-semibold text-black">#@Id</span>.
+        </p>
+
+        <p class="text-gray-500 mb-6">
+            A confirmation email has been sent to your inbox. You can track your order in your profile.
+        </p>
+
+        <button class="w-full bg-black text-white py-4 text-lg rounded-xl font-semibold hover:bg-neutral-800 transition-colors"
+                @onclick='() => Navigation.NavigateTo("/")'>
+            Return to Home
+        </button>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+}

@@ -1,0 +1,39 @@
+@page "/firebase"
+@inject IJSRuntime JS
+@using Microsoft.AspNetCore.Components.Forms
+
+@rendermode InteractiveWebAssembly
+
+<h3>Upload an Image (No Auth)</h3>
+
+<InputFile OnChange="HandleFileSelected" />
+<p>@StatusMessage</p>
+
+@if (!string.IsNullOrEmpty(ImageUrl))
+{
+    <img src="@ImageUrl" width="300" />
+}
+
+@code {
+    private string? StatusMessage;
+    private string? ImageUrl;
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream(10_000_000).ReadAsync(buffer);
+        var fileName = $"{Guid.NewGuid()}.jpg";
+
+        try
+        {
+            StatusMessage = "Uploading...";
+            ImageUrl = await JS.InvokeAsync<string>("firebaseHelpers.uploadToFirebase", buffer, fileName);
+            StatusMessage = "Uploaded!";
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Error: {ex.Message}";
+        }
+    }
+}

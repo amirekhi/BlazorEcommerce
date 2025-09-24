@@ -1,0 +1,85 @@
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@implements IAsyncDisposable
+@rendermode InteractiveWebAssembly
+
+<div class="relative">
+    <button @onclick="ToggleSearch" class="hover:text-gray-500 transition text-sm font-light">
+        Search
+    </button>
+
+    @if (showSearch)
+    {
+        <div class="absolute right-0 top-8 z-50 w-72 bg-white border border-gray-300 rounded-full shadow-lg px-3 py-2 flex items-center space-x-2 transition-all">
+        <input type="text"
+                @ref="searchInputRef"
+                @bind="searchQuery"
+                @bind:event="oninput"
+                @onkeydown="HandleKeyDown"
+                placeholder="Search products..."
+                class="flex-grow px-3 py-2 text-sm text-gray-800 bg-transparent focus:outline-none" />
+
+            <button @onclick="NavigateToSearch"
+                    class="bg-black text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-900 transition">
+                Go
+            </button>
+        </div>
+    }
+</div>
+
+@code {
+    private bool showSearch = false;
+    private string searchQuery = string.Empty;
+    private DotNetObjectReference<MiniSearch>? objRef;
+    private ElementReference searchInputRef;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("searchInterop.registerShortcut", objRef);
+        }
+
+        if (showSearch)
+        {
+            await JS.InvokeVoidAsync("searchInterop.focusElement", searchInputRef);
+        }
+    }
+
+    [JSInvokable]
+    public void ToggleSearchFromJs()
+    {
+        showSearch = !showSearch;
+        StateHasChanged(); // triggers OnAfterRenderAsync
+    }
+
+    private void ToggleSearch()
+    {
+        showSearch = !showSearch;
+    }
+
+    private void NavigateToSearch()
+    {
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+        {
+            Navigation.NavigateTo($"/search?query={Uri.EscapeDataString(searchQuery)}");
+            showSearch = false;
+        }
+    }
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            NavigateToSearch();
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        objRef?.Dispose();
+    }
+}
+

@@ -1,0 +1,22 @@
+
+
+@inject IJSRuntime JS
+
+<div class="bg-white rounded-2xl shadow-md p-4">
+    <h3 class="text-lg font-semibold mb-2">Traffic Sources</h3>
+    <div class="relative h-64 flex justify-center items-center">
+    <canvas id="trafficSourceChart"></canvas>
+</div>
+</div>
+
+@code {
+    [Parameter] public Dictionary<string, int> Sources { get; set; } = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && Sources?.Any() == true)
+        {
+            await JS.InvokeVoidAsync("renderTrafficSourceChart", Sources);
+        }
+    }
+}

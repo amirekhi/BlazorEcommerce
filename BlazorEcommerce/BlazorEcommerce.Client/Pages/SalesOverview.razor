@@ -1,0 +1,91 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@using BlazorEcommerce.Client.Pages
+
+
+@rendermode InteractiveWebAssembly
+@inject IClientAnalyticsService AnalyticsRepo
+
+<PageTitle>Sales Overview</PageTitle>
+
+<h1 class="text-2xl font-bold mb-6">Sales Dashboard</h1>
+
+@if (overview == null || revenueData == null)
+{
+    <div class="text-gray-500">Loading analytics data...</div>
+}
+else
+{
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <SummaryCard Title="Total Sales" Value="@overview.TotalSalesAllTime.ToString("C")" />
+        <SummaryCard Title="Total Orders" Value="@overview.OrdersCountAllTime.ToString()" />
+        <SummaryCard Title="Avg. Order Value" Value="@overview.AverageOrderValueAllTime.ToString("C")" />
+        <SummaryCard Title="Conversion Rate" Value="@overview.ConversionRateThisMonth.ToString("P2")" />
+    </div>
+
+        <div class="overflow-x-auto bg-white p-4 rounded-xl shadow mb-14">
+        <table class="min-w-full table-auto border-collapse border border-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Metric</th>
+                    <th class="border border-gray-300 px-4 py-2 text-center">Today</th>
+                    <th class="border border-gray-300 px-4 py-2 text-center">This Week</th>
+                    <th class="border border-gray-300 px-4 py-2 text-center">This Month</th>
+                    <th class="border border-gray-300 px-4 py-2 text-center">All Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hover:bg-gray-100">
+                    <td class="border border-gray-300 px-4 py-2 font-semibold">Total Sales</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.TotalSalesToday.ToString("C")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.TotalSalesThisWeek.ToString("C")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.TotalSalesThisMonth.ToString("C")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.TotalSalesAllTime.ToString("C")</td>
+                </tr>
+                <tr class="hover:bg-gray-100 bg-white">
+                    <td class="border border-gray-300 px-4 py-2 font-semibold">Orders Count</td>
+                    <td class="border border-gray-300 px-4 py-2 text-righ">@overview.OrdersCountToday</td>
+                    <td class="border border-gray-300 px-4 py-2 text-righ">@overview.OrdersCountThisWeek</td>
+                    <td class="border border-gray-300 px-4 py-2 text-righ">@overview.OrdersCountThisMonth</td>
+                    <td class="border border-gray-300 px-4 py-2 text-righ">@overview.OrdersCountAllTime</td>
+                </tr>
+                <tr class="hover:bg-gray-100">
+                    <td class="border border-gray-300 px-4 py-2 font-semibold">Avg Order Value</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.AverageOrderValueToday.ToString("C")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.AverageOrderValueThisWeek.ToString("C")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.AverageOrderValueThisMonth.ToString("C")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.AverageOrderValueAllTime.ToString("C")</td>
+                </tr>
+                <tr class="hover:bg-gray-100 bg-white">
+                    <td class="border border-gray-300 px-4 py-2 font-semibold">Conversion Rate</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.ConversionRateToday.ToString("P2")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.ConversionRateThisWeek.ToString("P2")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">@overview.ConversionRateThisMonth.ToString("P2")</td>
+                    <td class="border border-gray-300 px-4 py-2 text-right">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bg-white rounded-xl shadow p-6">
+        <h2 class="text-lg font-semibold mb-4">Revenue Trend (Last 30 Days)</h2>
+        <RevenueChart Data="revenueData" />
+    </div>
+}
+
+@code {
+    private SalesSummaryDto? overview;
+    private List<RevenueTrendDto>? revenueData;
+    private bool initialized = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!initialized)
+        {
+            overview = await AnalyticsRepo.GetSalesOverviewAsync();
+            revenueData = await AnalyticsRepo.GetRevenueTrendAsync(30);
+            initialized = true;
+            StateHasChanged();
+        }
+    }
+}

@@ -1,0 +1,137 @@
+
+@rendermode InteractiveWebAssembly
+@using BlazorEcommerce.Client.Services
+@using BlazorEcommerce.DTOs.Entities
+
+
+@inject IClientProductService ProductService
+@inject NavigationManager Navigation
+
+<h1 class="text-3xl font-bold mb-6 text-gray-900">Manage Products</h1>
+
+<div class="flex items-center justify-between mb-4">
+    <input type="text" placeholder="Search products..."
+           @bind="searchQuery" @bind:event="oninput"
+           class="w-full sm:w-96 px-4 py-2 border rounded-xl bg-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    <div class="flex items-center gap-3">
+        <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl disabled:opacity-50"
+                @onclick="ConfirmMultiDelete" disabled="@(!selectedProductIds.Any())">
+            Delete Selected
+        </button>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl"  @onclick='() => Navigation.NavigateTo("/admin/products/create")'>
+            + Add Product
+        </button>
+    </div>
+</div>
+
+@if (isLoading)
+{
+    <p class="text-gray-500 text-lg">Loading products...</p>
+}
+else if (filteredProducts.Count == 0)
+{
+    <p class="text-gray-500 text-lg">No products found.</p>
+}
+else
+{
+    <div class="w-full overflow-auto rounded-xl shadow-md border border-gray-200">
+        <table class="min-w-full bg-white shadow-md rounded-xl overflow-hidden">
+            <thead class="bg-gray-100 text-left text-sm font-semibold text-gray-600">
+                <tr>
+                    <th class="px-6 py-3">ID</th>
+                    <th class="px-6 py-3">Name</th>
+                    <th class="px-6 py-3">Description</th>
+                    <th class="px-6 py-3">Price</th>
+                    <th class="px-6 py-3 text-center">Edit</th>
+                    <th class="px-6 py-3 text-center">Select</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-800 text-sm divide-y divide-gray-200">
+                @foreach (var product in filteredProducts)
+                {
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">@product.Id</td>
+                        <td class="px-6 py-4">@product.Name</td>
+                        <td class="px-6 py-4 truncate max-w-[300px]">@product.Description</td>
+                        <td class="px-6 py-4">$@product.Price.ToString("F2")</td>
+                        <td class="px-6 py-4 text-center">
+                            <button class="text-blue-600 hover:underline"
+                                    @onclick='() => Navigation.NavigateTo($"/admin/products/edit/{product.Id}")'>
+                                Edit
+                            </button>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                           <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox"
+                                    class="peer hidden"
+                                    checked="@selectedProductIds.Contains(product.Id)"
+                                    @onchange="(e) => ToggleSelection(product.Id, ((ChangeEventArgs)e).Value is bool b && b)" />
+                                <span class="w-5 h-5 inline-block border rounded 
+                                            peer-checked:bg-gray-500 
+                                            peer-checked:border-gray-600 
+                                            bg-gray-200"></span>
+                            </label>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<ProductDTO> allProducts = new();
+    private List<ProductDTO> filteredProducts => string.IsNullOrWhiteSpace(searchQuery)
+        ? allProducts
+        : allProducts.Where(p => p.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
+
+    private List<int> selectedProductIds = new();
+    private string searchQuery = "";
+    private bool isLoading = true;
+    private bool hasLoaded = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !hasLoaded)
+        {
+            hasLoaded = true;
+            await LoadProductsAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadProductsAsync()
+    {
+        isLoading = true;
+        allProducts = await ProductService.GetProducts();
+        selectedProductIds.Clear();
+        isLoading = false;
+    }
+
+    private void ToggleSelection(int id, bool isChecked)
+    {
+        if (isChecked)
+            selectedProductIds.Add(id);
+        else
+            selectedProductIds.Remove(id);
+    }
+
+    private async Task ConfirmMultiDelete()
+    {
+        if (!selectedProductIds.Any())
+            return;
+
+        var confirm = await JS.InvokeAsync<bool>("confirm", $"Delete {selectedProductIds.Count} product(s)?");
+        if (!confirm) return;
+
+        foreach (var id in selectedProductIds)
+        {
+            await ProductService.DeleteProduct(id);
+        }
+
+        await LoadProductsAsync();
+    }
+
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+}

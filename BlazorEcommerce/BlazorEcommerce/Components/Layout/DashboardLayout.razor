@@ -1,0 +1,44 @@
+@inherits LayoutComponentBase
+@namespace BlazorEcommerce.Layout
+@using BlazorEcommerce.Client.Pages
+
+
+
+
+
+
+
+<div class="flex min-h-screen bg-gray-100 text-gray-900">
+    <!-- Sidebar (Desktop) -->
+<aside class="hidden md:block w-64 bg-white border-r border-gray-200 shadow-md">
+    <div class="p-6 space-y-6">
+        <h2 class="text-2xl font-bold text-gray-800">Admin Dashboard</h2>
+        <nav class="space-y-1">
+            <div>
+                <h3 class="text-xs font-semibold text-gray-500 uppercase px-2 mb-1">Management</h3>
+                <NavLink href="/admin/products" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Products</NavLink>
+                <NavLink href="/admin/users" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Users</NavLink>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-xs font-semibold text-gray-500 uppercase px-2 mb-1">Analytics</h3>
+                <NavLink href="/admin/analytics/overview" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Overview</NavLink>
+                <NavLink href="/admin/analytics/sales-overview" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Sales</NavLink>
+                <NavLink href="/admin/analytics/traffic" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Traffic</NavLink>
+                <NavLink href="/admin/analytics/conversion-funnel" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Conversion Funnel</NavLink>
+                <NavLink href="/admin/analytics/page-drop-off" class="block px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold"> Page Drop-Off</NavLink>
+            </div>
+            <div class="mt-4">
+                <NavLink href="/" class="block px-4 py-2 text-red-600 rounded-lg hover:bg-red-100" activeClass="bg-red-200 font-semibold">Back to Site</NavLink>
+            </div>
+        </nav>
+    </div>
+</aside>
+
+
+    <MobileMenuDash />
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 mt-14 md:mt-0 overflow-x-hidden">
+        @Body
+    </main>
+</div>

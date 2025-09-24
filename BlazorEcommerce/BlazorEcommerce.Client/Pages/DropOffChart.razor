@@ -1,0 +1,47 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@inject IClientAnalyticsService AnalyticsRepo
+@inject IJSRuntime JSRuntime
+
+@rendermode InteractiveWebAssembly
+
+<div class="p-6">
+    <h2 class="text-xl font-semibold mb-4">Page Drop-Off Analysis</h2>
+
+    @if (dropOffData is null)
+    {
+        <p>Loading drop-off data...</p>
+    }
+    else
+    {
+        <div class="p-6 h-[calc(100vh-100px)] flex items-center justify-center">
+            <div class="w-full h-full">
+                <canvas id="dropOffChart" class="w-full h-full"></canvas>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private List<PageDropOffDto>? dropOffData;
+    private bool shouldRenderChart = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            dropOffData = await AnalyticsRepo.GetPageDropOffStatsAsync();
+            shouldRenderChart = true;
+            StateHasChanged(); // Triggers re-render
+        }
+        else if (shouldRenderChart && dropOffData != null)
+        {
+            shouldRenderChart = false;
+
+            var pages = dropOffData.Select(p => p.Page).ToList();
+            var percentages = dropOffData.Select(p => p.DropOffPercentage).ToList();
+
+            await JSRuntime.InvokeVoidAsync("renderDropOffChart", pages, percentages);
+        }
+    }
+}

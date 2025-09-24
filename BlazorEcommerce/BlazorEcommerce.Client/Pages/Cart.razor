@@ -1,0 +1,179 @@
+@page "/cart"
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@using ClassLibrary1.Interfaces
+@inject IServiceProvider Services
+@inject NavigationManager Navigation
+@inject CartStateService CartState
+
+@rendermode InteractiveWebAssembly
+
+<section class="w-[80%] mx-auto my-20 min-h-[600px]">
+    <h1 class="text-3xl font-semibold mb-6">Your Shopping Cart</h1>
+
+    @if (isLoading)
+    {
+        <div class="flex justify-center items-center my-auto h-[500px]">
+            <span class="md:h-10 md:w-10 w-6 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></span>
+        </div>
+    }
+    else if (errorMessage is not null)
+    {
+        <p class="text-red-600 text-center">@errorMessage</p>
+    }
+    else if (PageCart == null || PageCart.Items.Count == 0)
+    {
+        <p class="text-center text-gray-500">Your cart is empty.</p>
+    }
+    else
+    {
+        <div class="space-y-4 w-full">
+            @foreach (var item in PageCart.Items)
+            {
+                <div class="flex items-center gap-4 border-b border-gray-200 pb-4">
+                    <img src="@item.ProductImageUrl" alt="@item.ProductName" class="w-20 h-20 object-cover rounded" />
+                    <div class="flex-1">
+                        <h3 class="font-semibold">@item.ProductName</h3>
+                        <p class="text-gray-600">@item.UnitPrice.ToString("C") each</p>
+                    </div>
+
+                    <input type="number" min="1" class="w-16 border border-gray-300 bg-white text-black rounded text-center"
+                           value="@item.Quantity"
+                           @onchange="async e => await UpdateQuantity(item.ProductId, e.Value?.ToString())" />
+
+                    <p class="w-24 text-right font-semibold">
+                        @((item.UnitPrice * item.Quantity).ToString("C"))
+                    </p>
+
+                    <button @onclick="() => RemoveItem(item.ProductId)"
+                            class="text-red-600 hover:text-red-800 font-semibold">
+                        Remove
+                    </button>
+                </div>
+            }
+
+            <div class="text-right mt-6 font-bold text-xl">
+                Total: @PageCart.Items.Sum(i => i.UnitPrice * i.Quantity).ToString("C")
+            </div>
+
+            <div class="flex justify-end mt-4 space-x-4">
+                <button @onclick="ClearCart" class="px-6 py-2 bg-red-600 text-white rounded hover:bg-red-700">
+                    Clear Cart
+                </button>
+                <button @onclick="Checkout" class="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                    Checkout
+                </button>
+            </div>
+        </div>
+    }
+</section>
+
+@code {
+    private CartDto? PageCart;
+    private IClientCartRepository? _cartRepo;
+    private bool isLoading = true;
+    private string? errorMessage;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _cartRepo = Services.GetRequiredService<IClientCartRepository>();
+            await LoadCart();
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadCart()
+    {
+        errorMessage = null;
+        try
+        {
+            PageCart = await _cartRepo.GetCartAsync();
+            CartState.SetItemCount(PageCart?.Items.Sum(i => i.Quantity) ?? 0);
+        }
+        catch (HttpRequestException httpEx) when (httpEx.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            // Redirect to login with return URL
+            Navigation.NavigateTo($"/login?redirectUri=/cart", forceLoad: true);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Failed to load cart: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task UpdateQuantity(int productId, string? newQtyString)
+    {
+        if (int.TryParse(newQtyString, out int newQty) && newQty > 0)
+        {
+            isLoading = true;
+            try
+            {
+                PageCart = await _cartRepo.UpdateItemQuantityAsync(productId, newQty);
+                CartState.SetItemCount(PageCart?.Items.Sum(i => i.Quantity) ?? 0);
+            }
+            catch (Exception ex)
+            {
+                errorMessage = $"Could not update quantity: {ex.Message}";
+            }
+            finally
+            {
+                isLoading = false;
+            }
+        }
+    }
+
+    private async Task RemoveItem(int productId)
+    {
+        isLoading = true;
+        try
+        {
+            PageCart = await _cartRepo.RemoveItemFromCartAsync(productId);
+            CartState.SetItemCount(PageCart?.Items.Sum(i => i.Quantity) ?? 0);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Could not remove item: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task ClearCart()
+    {
+        isLoading = true;
+        try
+        {
+            bool success = await _cartRepo.ClearCartAsync();
+            if (success)
+            {
+                PageCart = new CartDto { Items = new List<CartItemDto>() };
+                CartState.SetItemCount(0);
+            }
+            else
+            {
+                errorMessage = "Could not clear the cart.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Could not clear cart: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private void Checkout()
+    {
+        Navigation.NavigateTo("/checkout");
+    }
+}

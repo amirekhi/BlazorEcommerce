@@ -1,0 +1,114 @@
+@page "/product/{id:int}"
+@using BlazorEcommerce.Client.Pages
+@using ClassLibrary1.DTOs.Entities
+@using ClassLibrary1.Interfaces
+@using BlazorEcommerce.DTOs.Entities
+@using Classlibrary1.Services
+@inject IServiceProvider Services
+
+<PageTitle>@(product?.Name ?? "Product")</PageTitle>
+
+@if (product is null)
+{
+    <div class="text-center py-20 text-gray-600 text-lg h-[500px] flex justify-center items-center">
+        Loading product details...
+    </div>
+}
+else
+{
+    <section class="min-h-[600px] pt-[100px]">
+        <div class="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Product Image -->
+            <div class="w-full">
+                <img src="@product.ImageUrl" alt="@product.Name"
+                     class="w-full h-[450px] object-contain rounded-2xl shadow-md" />
+            </div>
+
+            <!-- Product Info -->
+            <div class="flex flex-col justify-center">
+                <h1 class="text-4xl font-bold mb-4">@product.Name</h1>
+                <p class="text-lg text-gray-600 mb-6">@product.Description</p>
+                <div class="text-2xl font-semibold text-black mb-4">$@product.Price</div>
+
+                <!-- CLIENT INTERACTIVE BUTTON -->
+                <AddToCartButton ProductId="@product.Id" />
+            </div>
+        </div>
+    </section>
+    @if (relatedProducts?.Any() == true)
+    
+        {
+            <section class="my-24 max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-semibold text-gray-900 mb-10">More in @productCategory?.Name</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 w-full">
+                    @foreach (var p in relatedProducts)
+                    {
+                        <a href="/product/@p.Id" class="block group ">
+                            <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                                <div class="w-full h-60 bg-gray-100 flex items-center justify-center overflow-hidden">
+                                    <img src="@p.ImageUrl" alt="@p.Name"
+                                        class="object-contain h-full transition-transform duration-300 group-hover:scale-105" />
+                                </div>
+                                <div class="p-6">
+                                    <h3 class="text-xl font-medium text-gray-900 mb-1 truncate">@p.Name</h3>
+                                    <p class="text-gray-500 text-sm mb-3 leading-snug line-clamp-2">
+                                        @p.Description?.Substring(0, Math.Min(100, p.Description.Length))...
+                                    </p>
+                                    <span class="text-lg font-semibold text-black">$@p.Price</span>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </section>
+        }
+
+
+}
+
+
+
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private ProductDTO? product;
+    private List<ProductDTO> relatedProducts = new();
+    private CategoryDTO? productCategory;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var productService = Services.GetRequiredService<IProductService>();
+        var categoryService = Services.GetRequiredService<ICategoryService>();
+
+        var entity = await productService.GetProductById(id);
+        if (entity != null)
+        {
+            product = new ProductDTO
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+                Description = entity.Description,
+                Price = entity.Price,
+                ImageUrl = entity.ImageUrl,
+                CategoryId = entity.CategoryId // Make sure your DTO has this
+            };
+
+            // Load the product's category directly
+            productCategory = await categoryService.GetByIdAsync(product.CategoryId!.Value);
+            Console.WriteLine($"Loaded category: {productCategory?.Name}");
+            if (productCategory != null)
+            {
+                relatedProducts = productCategory.Products
+                    .Where(p => p.Id != product.Id) // exclude current product
+                    .ToList();
+
+                  Console.WriteLine($"Loaded category: {relatedProducts.Count} related products");
+            }
+        }
+    }
+}
+
+

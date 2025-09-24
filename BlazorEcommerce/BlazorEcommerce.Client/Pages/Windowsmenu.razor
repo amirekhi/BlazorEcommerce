@@ -1,0 +1,49 @@
+  @rendermode InteractiveWebAssembly
+  
+  
+  <div class="w-64 flex-col justify-center items-start" >
+        <div class="border border-gray-200 rounded-lg shadow-sm">
+                <button @onclick="() => showManagement = !showManagement"
+                        class="w-full flex items-center justify-between px-4 py-2 font-semibold bg-gray-100 hover:bg-gray-200 rounded-t-lg">
+                    Management
+                    <span class="transform transition-transform duration-300"
+                        style="@((showManagement ? "rotate(90deg)" : "rotate(0deg)"))">
+                        ▶
+                    </span>
+                </button>
+                @if (showManagement)
+                {
+                    <div class="bg-white divide-y divide-gray-200">
+                        <NavLink href="/admin/products" class="block px-6 py-2 hover:bg-gray-50" activeClass="bg-gray-100 font-semibold">Products</NavLink>
+                        <NavLink href="/admin/users" class="block px-6 py-2 hover:bg-gray-50" activeClass="bg-gray-100 font-semibold">Users</NavLink>
+                    </div>
+                }
+            </div>
+
+            <!-- Analytics -->
+            <div class="border border-gray-200 rounded-lg shadow-sm">
+                <button @onclick="() => showAnalytics = !showAnalytics"
+                        class="w-full flex items-center justify-between px-4 py-2 font-semibold bg-gray-100 hover:bg-gray-200 rounded-t-lg">
+                    Analytics
+                    <span class="transform transition-transform duration-300"
+                        style="@((showAnalytics ? "rotate(90deg)" : "rotate(0deg)"))">
+                        ▶
+                    </span>
+                </button>
+                @if (showAnalytics)
+                {
+                    <div class="bg-white divide-y divide-gray-200">
+                        <NavLink href="/admin/analytics/overview" class="block px-6 py-2 hover:bg-gray-50" activeClass="bg-gray-100 font-semibold">Overview</NavLink>
+                        <NavLink href="/admin/analytics/sales" class="block px-6 py-2 hover:bg-gray-50" activeClass="bg-gray-100 font-semibold">Sales</NavLink>
+                        <NavLink href="/admin/analytics/visitors" class="block px-6 py-2 hover:bg-gray-50" activeClass="bg-gray-100 font-semibold">Visitors</NavLink>
+                    </div>
+                }
+            </div>
+
+    </div>
+
+
+    @code {
+    private bool showManagement = false;
+    private bool showAnalytics = false;
+}

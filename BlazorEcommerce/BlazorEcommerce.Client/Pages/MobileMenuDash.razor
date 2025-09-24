@@ -1,0 +1,39 @@
+@rendermode InteractiveWebAssembly
+
+@code {
+    private bool isMobileMenuOpen = false;
+
+    private void ToggleMobileMenu()
+    {
+        isMobileMenuOpen = !isMobileMenuOpen;
+    }
+
+    private void CloseMobileMenu()
+    {
+        isMobileMenuOpen = false;
+    }
+}
+    <!-- Mobile Top Bar -->
+    <div class="md:hidden fixed top-0 left-0 w-full bg-white shadow z-20 flex justify-between items-center px-4 py-3 border-b border-gray-200">
+        <span class="text-xl font-bold">Admin</span>
+        <button @onclick="ToggleMobileMenu" class="text-gray-700 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    @if (isMobileMenuOpen)
+    {
+        <div class="md:hidden fixed top-14 left-0 w-full bg-white shadow z-10 border-t border-gray-200">
+            <nav class="flex flex-col space-y-2 px-4 py-4">
+                <NavLink href="/admin/products" @onclick="CloseMobileMenu" class="px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Products</NavLink>
+                <NavLink href="/admin/users" @onclick="CloseMobileMenu" class="px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Users</NavLink>
+                <NavLink href="/admin/analytics" @onclick="CloseMobileMenu" class="px-4 py-2 rounded-lg hover:bg-gray-100" activeClass="bg-gray-200 font-semibold">Analytics</NavLink>
+                <NavLink href="/" @onclick="CloseMobileMenu" class="px-4 py-2 text-red-600 rounded-lg hover:bg-red-100" activeClass="bg-red-200 font-semibold">Back to Site</NavLink>
+            </nav>
+        </div>
+    }

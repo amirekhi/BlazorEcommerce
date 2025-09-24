@@ -1,0 +1,25 @@
+@using System.Text.Json
+@using ClassLibrary1.DTOs.Entities
+
+@inject IJSRuntime JS
+
+<canvas id="@CanvasId" width="800" height="400"></canvas>
+
+@code {
+    [Parameter]
+    public List<RevenueTrendDto> Data { get; set; } = new();
+
+    private string CanvasId = "revenueChart";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && Data.Any())
+        {
+            var labels = Data.Select(d => d.Date.ToString("MM-dd")).ToArray();
+            var values = Data.Select(d => d.TotalRevenue).ToArray();
+
+            await JS.InvokeVoidAsync("renderRevenueChart", CanvasId, labels, values);
+        }
+    }
+}
+

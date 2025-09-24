@@ -1,0 +1,22 @@
+@using ClassLibrary1.DTOs.Entities
+<table class="min-w-full table-auto bg-white rounded-xl shadow overflow-hidden">
+    <thead class="bg-gray-100 text-left">
+        <tr>
+            <th class="p-3">Referrer</th>
+            <th class="p-3">Visits</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Referrers)
+        {
+            <tr class="border-b">
+                <td class="p-3 text-blue-600">@item.Referrer</td>
+                <td class="p-3">@item.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    [Parameter] public List<TopReferrerDto> Referrers { get; set; }
+}

@@ -1,0 +1,13 @@
+@page "/admin/analytics/overview"
+
+@using BlazorEcommerce.Client.Pages
+@layout BlazorEcommerce.Layout.DashboardLayout
+
+@code {
+    [Parameter]
+    public int? ProductId { get; set; }
+}
+
+<section class="w-[85%] mx-auto mt-6">
+    <Overview />
+</section>

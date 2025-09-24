@@ -1,0 +1,90 @@
+@page "/login"
+@using ClassLibrary1.DTOs.Entities
+@using Microsoft.JSInterop
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+@rendermode InteractiveWebAssembly
+
+<div class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-md border border-gray-200">
+        <h1 class="text-3xl font-semibold text-center mb-6 text-gray-900 pt-4">Sign in to your account</h1>
+
+        <div class="flex flex-col gap-4 p-4">
+            <input @bind="loginModel.Username" placeholder="Username"
+                   class="px-4 py-3 text-sm border border-gray-300 rounded-lg bg-white text-black focus:outline-none focus:ring-2 focus:ring-black" />
+            <input @bind="loginModel.Password" type="password" placeholder="Password"
+                   class="px-4 py-3 text-sm border border-gray-300 rounded-lg bg-white text-black focus:outline-none focus:ring-2 focus:ring-black" />
+
+            <button @onclick="LoginUser"
+                    class="w-full bg-black text-white py-3 rounded-lg text-sm font-medium hover:bg-gray-800 transition duration-300 flex items-center justify-center"
+                    disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span class="h-6 w-6 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></span>
+
+
+                }
+                else
+                {
+
+                    <span>Login</span>
+                }
+            </button>
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <p class="text-sm text-red-500 text-center mt-2">@errorMessage</p>
+            }
+
+            @if (showWelcome)
+            {
+                <p class="text-green-600 text-center text-sm mt-2 animate-pulse">✅ Welcome to the website!</p>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginDto loginModel = new();
+    private string? errorMessage;
+    private bool isLoading = false;
+    private bool showWelcome = false;
+
+    private async Task LoginUser()
+    {
+        errorMessage = null;
+        isLoading = true;
+        showWelcome = false;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/account/login", loginModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var user = await response.Content.ReadFromJsonAsync<UserDto>();
+
+                await JS.InvokeVoidAsync("localStorage.setItem", "authToken", user?.Token);
+
+                showWelcome = true;
+
+
+                Navigation.NavigateTo("/");
+            }
+            else
+            {
+                errorMessage = "Invalid login credentials.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

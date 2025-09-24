@@ -1,0 +1,63 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.Interfaces
+@inject CartStateService CartState
+@inject IClientCartRepository  CartRepository
+@inject NavigationManager Navigation
+
+@rendermode InteractiveWebAssembly
+
+<a href="/cart" class="hover:text-gray-400 transition bg-black block py-2 px-3 rounded-lg text-white relative">
+    Cart
+    @if (itemCount > 0)
+    {
+        <span class="absolute -top-1 -right-2 bg-red-500 text-white text-xs px-1.5 rounded-full">
+            @itemCount
+        </span>
+    }
+</a>
+
+@code {
+    private int itemCount;
+    private bool _initialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_initialized)
+        {
+            try
+            {
+                var cart = await CartRepository.GetCartAsync();
+                itemCount = cart.Items.Sum(item => item.Quantity); // handles empty cart as well
+                CartState.SetItemCount(itemCount);
+            }
+            catch (HttpRequestException httpEx) when (httpEx.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                // User is not logged in → silently skip loading cart
+                itemCount = 0;
+                CartState.SetItemCount(0);
+            }
+            catch (Exception ex)
+            {
+                // Log the error or show debug info (in dev mode)
+                Console.Error.WriteLine($"Cart load failed: {ex.Message}");
+                itemCount = 0;
+                CartState.SetItemCount(0);
+            }
+
+            CartState.OnChange += UpdateItemCount;
+            _initialized = true;
+            StateHasChanged(); // trigger re-render
+        }
+    }
+
+    private void UpdateItemCount()
+    {
+        itemCount = CartState.ItemCount;
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        CartState.OnChange -= UpdateItemCount;
+    }
+}

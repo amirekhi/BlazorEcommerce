@@ -1,0 +1,31 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@inject IClientAnalyticsService AnalyticsRepo
+
+@rendermode InteractiveWebAssembly
+
+<h2 class="text-3xl font-semibold mb-6">Conversion Funnel</h2>
+
+@if (funnelData == null)
+{
+    <p>Loading funnel data...</p>
+}
+else
+{
+    <FunnelBars FunnelSteps="funnelData" />
+    <FunnelChart FunnelSteps="funnelData" />
+    
+}
+
+@code {
+    private List<FunnelStepDto> funnelData;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            funnelData = await AnalyticsRepo.GetConversionFunnelAsync();
+            StateHasChanged();
+        }
+    }
+}

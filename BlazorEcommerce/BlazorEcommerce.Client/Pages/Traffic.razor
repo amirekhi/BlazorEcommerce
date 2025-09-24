@@ -1,0 +1,60 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@inject IClientAnalyticsService TrafficRepo
+
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Traffic Analytics</PageTitle>
+
+<h2 class="text-2xl font-semibold mb-4">Traffic Overview</h2>
+
+@if (data == null)
+{
+    <p>Loading traffic data...</p>
+}
+else
+{
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <StatsCard Title="Today" Value="@data.TotalVisitsToday" />
+        <StatsCard Title="This Week" Value="@data.TotalVisitsThisWeek" />
+        <StatsCard Title="This Month" Value="@data.TotalVisitsThisMonth" />
+        <StatsCard Title="All Time" Value="@data.TotalVisitsAllTime" />
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+        <StatsCard Title="Unique Today" Value="@data.UniqueVisitorsToday" />
+        <StatsCard Title="Unique Week" Value="@data.UniqueVisitorsThisWeek" />
+        <StatsCard Title="Unique Month" Value="@data.UniqueVisitorsThisMonth" />
+    </div>
+
+    <div class="mb-4">
+        <StatsCard Title="Bounce Rate" Value="@($"{data.BounceRate:F1}%")" />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <TrafficSourceChart Sources="@(data.TrafficSources.ToDictionary(d => d.Source, d => d.Count))" />
+        <DeviceTypeChart Devices="@(data.DeviceTypes.ToDictionary(d => d.DeviceType, d => d.Count))" />
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <TopReferrersTable Referrers="@data.TopReferrers" />
+        <VisitedPagesTable Pages="@data.MostVisitedPages" />
+    </div>
+
+    <GeoTable GeoData="@data.GeoDistribution" />
+}
+
+@code {
+    private TrafficAnalyticsDto? data;
+    private bool _loaded;
+   
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !_loaded)
+        {
+            data = await TrafficRepo.GetTrafficSummaryAsync();
+            _loaded = true;
+            StateHasChanged(); // Trigger UI refresh
+        }
+    }
+}

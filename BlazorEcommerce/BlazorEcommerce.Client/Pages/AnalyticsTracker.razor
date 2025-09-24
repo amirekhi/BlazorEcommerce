@@ -1,0 +1,53 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@inject IClientAnalyticsRepository AnalyticsRepo
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+
+@implements IDisposable
+@rendermode InteractiveWebAssembly
+
+@code {
+    private string _currentUri = "";
+    private bool _renderedOnce = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_renderedOnce)
+        {
+            _renderedOnce = true;
+
+            _currentUri = Navigation.Uri;
+            Navigation.LocationChanged += OnLocationChanged;
+
+            await LogVisitAsync(); // Log initial page load
+        }
+    }
+
+    private async void OnLocationChanged(object? sender, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        if (e.Location != _currentUri)
+        {
+            _currentUri = e.Location;
+            await LogVisitAsync();
+        }
+    }
+
+    private async Task LogVisitAsync()
+    {
+        try
+        {
+            var metadata = await JSRuntime.InvokeAsync<VisitLogRequest>("analytics.collectVisitorMetadata");
+            await AnalyticsRepo.LogVisitAsync(metadata);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error logging visit: " + ex.Message);
+        }
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+}

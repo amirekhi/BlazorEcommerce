@@ -1,0 +1,106 @@
+﻿@page "/"
+@attribute [StreamRendering(true)]
+
+<div class="relative w-full h-[90vh] bg-white text-black overflow-hidden">
+
+    <!-- Background Image -->
+    <img src="/tradein.png" 
+     alt="Hero Image"
+     class="absolute  w-full h-full object-cover inset-0  z-0" />
+
+    <!-- Overlay to improve text contrast (optional) -->
+      <div class="absolute inset-0 max-md:bg-white/160 max-md:backdrop-blur-sm z-10"></div>
+
+    <!-- Foreground Text Content -->
+    <div class="relative z-20 flex flex-col items-center justify-start pt-32 h-full text-center px-6">
+        <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
+            Rethink What’s Possible
+        </h1>
+        <p class="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl">
+            Experience speed, power, and elegance. Designed for developers, built for users.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="mt-8 flex gap-4">
+            <a href="/products" class="px-6 py-3 bg-black text-white text-lg rounded-2xl hover:scale-105 transition">
+                Shop Now !
+            </a>
+            <a href="/learn-more" class="px-6 py-3 bg-gray-200 text-black text-lg rounded-2xl hover:bg-gray-300 transition">
+                Learn More
+            </a>
+        </div>
+    </div>
+</div>
+ @* <section class="w-full h-[90vh] grid grid-cols-1 md:grid-cols-2">
+    <!-- Watches Section -->
+    <div class="relative bg-gray-100 flex items-center justify-center p-4">
+        <div class="text-center max-w-md">
+            <img src="/watchpride.png" alt="Watch" class="mx-auto object-contain w-100 h-[400px] mb-6" />
+            <h2 class="text-3xl md:text-4xl font-semibold mb-4">Smart Watches</h2>
+            <p class="text-gray-600 mb-6">
+                Discover our sleek and powerful smart watches — track your health, stay connected, and look good doing it.
+            </p>
+            <button class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition">
+                Explore Watches
+            </button>
+        </div>
+    </div>
+
+    <!-- Tablets Section -->
+    <div class="relative bg-white flex items-center justify-center p-10">
+        <div class="text-center max-w-md">
+            <img src="/ipadair.jpg" alt="Tablet" class="mx-auto object-contain w-100 h-[400px] mb-6" />
+            <h2 class="text-3xl md:text-4xl font-semibold mb-4">Tablets Redefined</h2>
+            <p class="text-gray-600 mb-6">
+                Power meets portability. Our tablets are designed for work, play, and everything in between.
+            </p>
+            <button class="px-6 py-2 bg-black text-white rounded-xl hover:bg-gray-800 transition">
+                Browse Tablets
+            </button>
+        </div>
+    </div>
+</section>  *@
+
+ <section class="w-full h-[80vh] max-md:h-auto grid grid-cols-1 md:grid-cols-2">
+    <!-- Watches Section -->
+    <div class="relative h-full max-md:h-[700px] ">
+        <!-- Background Image -->
+        <img src="/watchpride.png" alt="Watches" 
+             class="absolute inset-0 w-full h-full object-contain object-center z-0" />
+
+        <!-- Overlay for contrast -->
+        <div class="absolute inset-0 bg-black/20  z-10"></div>
+
+        <!-- Content -->
+        <div class="relative z-20 flex flex-col items-start justify-start h-full text-center max-md:justify-center max-md:items-center  pt-12 text-white px-6 max-md:pb-8">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Smart Watches</h2>
+            <p class="text-lg max-w-md mb-6 text-left max-md:text-center">
+                Stay connected and in control with our elegant new smartwatches. Track your fitness, calls, and time — all from your wrist.
+            </p>
+            <button class="px-6 py-3 bg-white text-black rounded-xl hover:bg-gray-100 transition max-md:mt-auto mb-8 ">
+                Explore Watches
+            </button>
+        </div>
+    </div>
+
+    <!-- Tablets Section -->
+    <div class="relative h-full max-md:h-[700px] ">
+        <!-- Background Image -->
+        <img src="/ipadair.jpg" alt="Tablets" 
+             class="absolute inset-0 w-full h-full object-contain object-center z-0" />
+
+        <!-- Overlay for contrast -->
+        <div class="absolute inset-0 bg-white/150 z-10"></div>
+
+        <!-- Content -->
+        <div class="relative z-20 flex flex-col items-center justify-start pt-12 h-full text-center text-black px-6 max-md:pb-8">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Tablets Redefined</h2>
+            <p class="text-lg max-w-md mb-6">
+                Built for creativity and performance. Our tablets deliver a stunning display and effortless productivity.
+            </p>
+            <button class="px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition max-md:mt-auto mb-8">
+                Browse Tablets
+            </button>
+        </div>
+    </div>
+</section> 

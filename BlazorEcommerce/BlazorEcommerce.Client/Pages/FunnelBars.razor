@@ -1,0 +1,31 @@
+@using ClassLibrary1.DTOs.Entities
+@inherits LayoutComponentBase
+
+@rendermode InteractiveWebAssembly
+
+@if (FunnelSteps != null)
+{
+    <div class="space-y-4 mt-6 mb-20">
+        @for (int i = 0; i < FunnelSteps.Count; i++)
+        {
+            var step = FunnelSteps[i];
+            var percent = i == 0 ? 100 : (double)step.Count / FunnelSteps[0].Count * 100;
+
+            <div class="bg-white shadow rounded-xl p-4">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-lg font-medium">@step.Step</span>
+                    <span class="text-sm text-gray-500">@step.Count users</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                    <div class="h-full bg-blue-600 rounded-full transition-all duration-500" style="width: @percent%"></div>
+                </div>
+                <div class="text-sm text-gray-600 mt-1">@percent.ToString("0.0")% reached</div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public List<FunnelStepDto> FunnelSteps { get; set; }
+}

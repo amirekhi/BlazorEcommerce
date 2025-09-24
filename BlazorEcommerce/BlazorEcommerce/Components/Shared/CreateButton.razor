@@ -1,0 +1,11 @@
+@rendermode RenderMode.InteractiveServer
+@inject NavigationManager Navigation
+
+<button @onclick="HandleClick">Create a Product</button>
+
+@code {
+    private void HandleClick()
+    {
+        Navigation.NavigateTo("/edit-product");
+    }
+}

@@ -1,0 +1,82 @@
+@page "/Products"
+@using BlazorEcommerce.DTOs.Entities
+@using ClassLibrary1.DTOs.Entities
+@using ClassLibrary1.Entities
+@inject ICategoryService CategoryService
+@attribute [StreamRendering(true)]
+@using BlazorEcommerce.Components.Shared
+@using ClassLibrary1.Interfaces
+
+
+<section class="min-h-screen">
+        <section class="bg-white text-black min-h-[50vh] flex items-center justify-center px-6">
+  <div class="max-w-4xl text-center">
+    <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
+      Discover Your Next Favorite Product
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-600 mb-8">
+      Crafted with precision. Designed to inspire. Built for everyday excellence.
+    </p>
+    <div class="flex justify-center gap-4">
+      <button class="bg-black text-white px-6 py-3 rounded-2xl shadow hover:bg-gray-800 transition hover:scale-105 ">
+       My Cart
+      </button>
+      <button class="px-6 py-3 bg-gray-200 text-black text-lg rounded-2xl hover:bg-gray-300 transition">
+        Learn More
+      </button>
+    </div>
+  </div>
+</section>
+
+
+        @if (categories == null)
+        {
+            <div class="text-center text-gray-600">Loading...</div>
+        }
+        else if (categories.Count == 0)
+        {
+            <div class="text-center text-gray-500">No products yet.</div>
+        }
+        else
+        {
+         <ProductCarousel Products="cat1?.Products ?? new List<ProductDTO>()" Title="@cat1?.Name" Description="@cat1?.Description" />
+
+          <WiderCarousel
+              Products="cat2?.Products ?? new List<ProductDTO>()"
+              Title="@cat2?.Name"
+              Description="@cat2?.Description"
+          />
+
+          <CategoryCarousel />
+
+          <FirstCardCarousel
+              Products="cat1?.Products ?? new List<ProductDTO>()"
+              Title="@cat1?.Name"
+              Description="@cat1?.Description"
+            />
+        }
+
+        <div class="mt-8 text-center">
+            <CreateButton />
+        </div>
+</section>
+@code {
+    private List<CategoryDTO>? categories;
+
+    // Manually separated product lists by category ID
+    private CategoryDTO cat1 = new();
+    private CategoryDTO cat2 = new();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        categories = await CategoryService.GetAllAsync();
+
+        // Replace these IDs with your actual known Category IDs
+        cat1 = categories.FirstOrDefault(c => c.Id == 1);
+        cat2 = categories.FirstOrDefault(c => c.Id == 2);
+
+    }
+}
+
+

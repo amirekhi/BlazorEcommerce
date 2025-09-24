@@ -1,0 +1,54 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@using ClassLibrary1.Interfaces
+@inject IClientCartRepository CartService
+@inject CartStateService CartState
+
+@rendermode InteractiveWebAssembly
+
+<button class="bg-black text-white px-6 py-3 rounded-lg text-lg hover:bg-gray-800 transition"
+        @onclick="AddToCart" disabled="@isLoading">
+    @(isLoading ? "Adding..." : "Add to Cart")
+</button>
+
+@if (confirmationMessage is not null)
+{
+    <p class="mt-4 text-green-600 font-medium">@confirmationMessage</p>
+}
+
+@code {
+    [Parameter] public int ProductId { get; set; }
+
+    private bool isLoading = false;
+    private string? confirmationMessage;
+
+    private async Task AddToCart()
+    {
+        isLoading = true;
+        confirmationMessage = null;
+
+        try
+        {
+            var addCartItem = new AddCartItemDto
+            {
+                ProductId = ProductId,
+                Quantity = 1
+            };
+
+            await CartService.AddItemToCartAsync(addCartItem);
+
+            // **This is the key step: update CartStateService**
+            CartState.IncrementItemCount();
+
+            confirmationMessage = "Product added to cart!";
+        }
+        catch (Exception ex)
+        {
+            confirmationMessage = $"Error: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* tailwind.css */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
+@layer utilities {
+  .no-focus-outline {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .no-focus-outline:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .no-focus-outline:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
+
+
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
+  filter: grayscale(100%);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}

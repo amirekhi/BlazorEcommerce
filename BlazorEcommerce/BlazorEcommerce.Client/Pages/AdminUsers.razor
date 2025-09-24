@@ -1,0 +1,176 @@
+@using BlazorEcommerce.Client.Services
+@using ClassLibrary1.DTOs.Entities
+@inject IClientAdminUserService AdminUserService
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@rendermode InteractiveWebAssembly
+
+<h1 class="text-3xl font-bold mb-6 text-gray-900">Manage Users</h1>
+
+<div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+    <input type="text" placeholder="Search users..."
+           @bind="searchQuery" @bind:event="oninput"
+           class="flex-grow sm:flex-grow-0 sm:w-96 px-4 py-2 border rounded-xl bg-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+
+    <div class="flex items-center gap-3 flex-wrap">
+        <button class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-xl disabled:opacity-50"
+                @onclick="ConfirmMultiDelete" disabled="@(!selectedUserIds.Any())">
+            Delete Selected
+        </button>
+        <button class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-xl disabled:opacity-50"
+                @onclick="ConfirmMultiDeactivate" disabled="@(!selectedUserIds.Any())">
+            Deactivate Selected
+        </button>
+        <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl disabled:opacity-50"
+                @onclick="ConfirmMultiReactivate" disabled="@(!selectedUserIds.Any())">
+            Activate Selected
+        </button>
+    </div>
+</div>
+
+@if (isLoading)
+{
+    <p class="text-gray-500 text-lg">Loading users...</p>
+}
+else if (filteredUsers.Count == 0)
+{
+    <p class="text-gray-500 text-lg">No users found.</p>
+}
+else
+{
+    <div class="w-full overflow-auto rounded-xl shadow-md border border-gray-200">
+        <table class="min-w-full bg-white rounded-xl overflow-hidden">
+            <thead class="bg-gray-100 text-left text-sm font-semibold text-gray-600">
+                <tr>
+                    <th class="px-6 py-3">Status</th>
+                    <th class="px-6 py-3">Username</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3">Created At</th>
+                    <th class="px-6 py-3 text-center">Edit</th>
+                    <th class="px-6 py-3 text-center">Select</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-800 text-sm divide-y divide-gray-200">
+                @foreach (var user in filteredUsers)
+                {
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <span class="inline-block w-5 h-5 rounded-full @(user.IsActive ? "bg-green-500" : "bg-yellow-700")" 
+                                  title="@(user.IsActive ? "Active" : "Inactive")"></span>
+                        </td>
+                        <td class="px-6 py-4">@user.UserName</td>
+                        <td class="px-6 py-4">@user.Email</td>
+                        <td class="px-6 py-4">@user.CreatedAt.ToShortDateString()</td>
+                        <td class="px-6 py-4 text-center">
+                            <button class="text-blue-600 hover:underline font-semibold"
+                                    @onclick='() => Navigation.NavigateTo($"/admin/users/edit/{user.Id}")'>
+                                Edit
+                            </button>
+                        </td>
+                        <td class="px-6 py-4 text-center">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox"
+                                       class="peer hidden"
+                                       checked="@selectedUserIds.Contains(user.Id)"
+                                       @onchange="(e) => ToggleSelection(user.Id, ((ChangeEventArgs)e).Value is bool b && b)" />
+                                <span class="w-5 h-5 inline-block border rounded 
+                                            peer-checked:bg-gray-500 
+                                            peer-checked:border-gray-600 
+                                            bg-gray-200"></span>
+                            </label>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private List<UserAdminDTO> allUsers = new();
+    private List<UserAdminDTO> filteredUsers => string.IsNullOrWhiteSpace(searchQuery)
+        ? allUsers
+        : allUsers.Where(u =>
+            u.UserName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+            u.Email.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+          .ToList();
+
+    private List<string> selectedUserIds = new();
+    private string searchQuery = "";
+    private bool isLoading = true;
+    private bool hasLoaded = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && !hasLoaded)
+        {
+            hasLoaded = true;
+            await LoadUsersAsync();
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadUsersAsync()
+    {
+        isLoading = true;
+        allUsers = await AdminUserService.GetAllUsersAsync();
+        selectedUserIds.Clear();
+        isLoading = false;
+    }
+
+    private void ToggleSelection(string id, bool isChecked)
+    {
+        if (isChecked)
+            selectedUserIds.Add(id);
+        else
+            selectedUserIds.Remove(id);
+    }
+
+    private async Task ConfirmMultiDeactivate()
+    {
+        if (!selectedUserIds.Any())
+            return;
+
+        var confirm = await JS.InvokeAsync<bool>("confirm", $"Deactivate {selectedUserIds.Count} user(s)?");
+        if (!confirm) return;
+
+        foreach (var id in selectedUserIds)
+        {
+            await AdminUserService.DeactivateUserAsync(id);
+        }
+
+        await LoadUsersAsync();
+    }
+
+    private async Task ConfirmMultiReactivate()
+    {
+        if (!selectedUserIds.Any())
+            return;
+
+        var confirm = await JS.InvokeAsync<bool>("confirm", $"Reactivate {selectedUserIds.Count} user(s)?");
+        if (!confirm) return;
+
+        foreach (var id in selectedUserIds)
+        {
+            await AdminUserService.ReactivateUserAsync(id);
+        }
+
+        await LoadUsersAsync();
+    }
+
+    private async Task ConfirmMultiDelete()
+    {
+        if (!selectedUserIds.Any())
+            return;
+
+        var confirm = await JS.InvokeAsync<bool>("confirm", $"Delete {selectedUserIds.Count} user(s)? This action cannot be undone.");
+        if (!confirm) return;
+
+        foreach (var id in selectedUserIds)
+        {
+            await AdminUserService.DeleteUserAsync(id);
+        }
+
+        await LoadUsersAsync();
+    }
+}

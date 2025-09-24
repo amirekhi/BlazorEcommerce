@@ -1,0 +1,23 @@
+@using ClassLibrary1.DTOs.Entities
+
+
+@rendermode InteractiveWebAssembly
+@inject IJSRuntime JSRuntime
+
+<canvas id="funnelChart" width="400" height="200" ></canvas>
+
+@code {
+    [Parameter]
+    public List<FunnelStepDto> FunnelSteps { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && FunnelSteps != null)
+        {
+            var labels = FunnelSteps.Select(f => f.Step).ToList();
+            var counts = FunnelSteps.Select(f => f.Count).ToList();
+
+            await JSRuntime.InvokeVoidAsync("renderFunnelChart", labels, counts);
+        }
+    }
+}

@@ -1,0 +1,82 @@
+@page "/edit-product"
+@page "/edit-product/{id:int}"
+@using BlazorEcommerce.Client.Services
+@using BlazorEcommerce.DTOs.Entities
+@inject IClientProductService ClientProductService
+@rendermode RenderMode.InteractiveWebAssembly
+
+@if (id.HasValue)
+{
+    <h3>Edit page</h3>
+}else {
+    <h3>Create page</h3>
+}
+
+<EditForm Model="product" OnSubmit="handleSubmit" >
+    <label > name</label>
+    <InputText @bind-Value="product.Name">@product.Name</InputText>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+
+</EditForm>
+
+@if(id.HasValue)
+{
+    <button @onclick="DeleteProduct" class="btn btn-danger">Delete</button>
+}
+
+
+
+@code {
+    [Parameter]
+    public int? id {get; set;}
+    private bool _loaded = false;
+    ProductDTO product {get; set;} =  new ProductDTO
+        {
+            Name = String.Empty,
+            CreatedAt = DateTime.Parse("2025-05-30T12:00:00Z").ToUniversalTime()
+        };
+
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && id.HasValue)
+        {
+            product = await ClientProductService.GetProductById(id.Value);
+            _loaded = true;
+            StateHasChanged();
+        }
+    }
+
+
+     async Task  handleSubmit()
+    {
+      if(id == null)
+      {
+          var productDTO = new ProductDTO
+          {
+              Name = product.Name,
+              Description = product.Description,
+              Price = product.Price,
+              Stock = product.Stock,
+              CategoryId = product.CategoryId ,
+              ImageUrl = product.ImageUrl,
+              CreatedAt = product.CreatedAt
+          };
+          await ClientProductService.AddProduct(productDTO);
+      }
+      else
+       await ClientProductService.EditProduct((int)id, product);
+
+    }
+
+
+
+    async Task DeleteProduct()
+    {
+        if (id.HasValue)
+        {
+            await ClientProductService.DeleteProduct((int)id);
+        }
+    }
+}    

@@ -1,0 +1,13 @@
+@page "/admin/users/edit/{UserId}"
+
+@using BlazorEcommerce.Client.Pages
+@layout BlazorEcommerce.Layout.DashboardLayout
+
+@code {
+    [Parameter]
+    public string? UserId { get; set; }
+}
+
+<section class="w-[85%] mx-auto mt-6">
+    <AdminUserEdit UserId="@UserId" />
+</section>

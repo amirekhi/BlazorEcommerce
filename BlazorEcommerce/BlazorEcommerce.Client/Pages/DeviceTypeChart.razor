@@ -1,0 +1,23 @@
+@using ClassLibrary1.DTOs.Entities
+@inject IJSRuntime JS
+@rendermode InteractiveWebAssembly
+
+<div class="bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow-md">
+    <h3 class="text-lg font-semibold mb-2">Device Types</h3>
+    <div class="relative h-64 flex justify-center items-center" >
+    <canvas id="deviceChart"></canvas>
+</div>
+</div>
+
+@code {
+    [Parameter]
+    public Dictionary<string, int> Devices { get; set; } = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && Devices?.Any() == true)
+        {
+            await JS.InvokeVoidAsync("renderDeviceChart", Devices);
+        }
+    }
+}

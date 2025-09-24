@@ -1,0 +1,129 @@
+@page "/register"
+@using ClassLibrary1.DTOs.Entities
+@using Microsoft.JSInterop
+@inject HttpClient Http
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+@rendermode InteractiveWebAssembly
+
+<div class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-10 w-full max-w-md border border-gray-200">
+        <h1 class="text-3xl font-semibold text-center mb-6 text-gray-900 pt-4">Create an account</h1>
+
+        <div class="flex flex-col gap-4 p-4 text-white">
+            <!-- Username -->
+            <input @bind="registerModel.Username" placeholder="Username"
+                   class="px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black bg-white text-black" />
+
+            <!-- Email -->
+            <input @bind="registerModel.Email" placeholder="Email"
+                   class="px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black bg-white text-black" />
+
+            <!-- Password -->
+            <input @bind="registerModel.Password" type="password" placeholder="Password"
+                   class="px-4 py-3 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black bg-white text-black" />
+
+            <!-- Profile Image Upload -->
+          <!-- Profile Image Upload Button -->
+            <label class="cursor-pointer px-4 py-3 text-sm border border-gray-300 rounded-lg bg-white text-black text-center hover:bg-gray-50 transition duration-200">
+                Select Profile Image
+                <InputFile OnChange="HandleFileSelected" class="hidden" />
+            </label>
+
+            @if (!string.IsNullOrWhiteSpace(registerModel.ProfileImageUrl))
+            {
+                <img src="@registerModel.ProfileImageUrl" class="w-20 h-20 rounded-full border self-center" />
+            }
+
+            @if (!string.IsNullOrWhiteSpace(StatusMessage))
+            {
+                <p class="text-sm text-gray-600 text-center mt-1">@StatusMessage</p>
+            }
+
+            <!-- Submit Button -->
+            <button @onclick="RegisterUser"
+                    class="relative w-full bg-black text-white py-3 rounded-lg text-sm font-medium hover:bg-gray-800 transition duration-300 flex items-center justify-center"
+                    disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span class="h-6 w-6 border-4 border-gray-300 border-t-transparent rounded-full animate-spin mr-2"></span>
+                }
+                else
+                {
+                    <span>Sign Up</span>
+                }
+            </button>
+
+            <!-- Error / Success Messages -->
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <p class="text-sm text-red-500 text-center mt-2">@errorMessage</p>
+            }
+
+            @if (!string.IsNullOrEmpty(successMessage))
+            {
+                <p class="text-sm text-green-600 text-center mt-2">@successMessage</p>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private RegisterDto registerModel = new();
+    private string? errorMessage;
+    private string? successMessage;
+    private string? StatusMessage;
+    private bool isLoading = false;
+
+    private async Task RegisterUser()
+    {
+        errorMessage = null;
+        successMessage = null;
+        isLoading = true;
+
+        try
+        {
+            var response = await Http.PostAsJsonAsync("api/account/register", registerModel);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var user = await response.Content.ReadFromJsonAsync<UserDto>();
+                await JS.InvokeVoidAsync("localStorage.setItem", "authToken", user?.Token);
+
+                successMessage = "Welcome! Redirecting...";
+                Navigation.NavigateTo("/");
+            }
+            else
+            {
+                errorMessage = "Registration failed. Please check your input.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+
+        isLoading = false;
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var buffer = new byte[file.Size];
+        await file.OpenReadStream(10_000_000).ReadAsync(buffer);
+        var fileName = $"{Guid.NewGuid()}.jpg";
+
+        try
+        {
+            StatusMessage = "Uploading...";
+            registerModel.ProfileImageUrl = await JS.InvokeAsync<string>(
+                "firebaseHelpers.uploadToFirebase", buffer, fileName);
+            StatusMessage = "Uploaded!";
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Upload error: {ex.Message}";
+        }
+    }
+}
