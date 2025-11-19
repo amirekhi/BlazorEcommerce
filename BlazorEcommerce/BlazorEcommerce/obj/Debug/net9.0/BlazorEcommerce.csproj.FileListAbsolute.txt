@@ -235,7 +235,9 @@ C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Deb
 C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\BlazorEcommerce.genruntimeconfig.cache
 C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\ref\BlazorEcommerce.dll
 C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\compressed\j9e64aupor-tspixnclmp.gz
-C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\compressed\mnm5crxyve-16czde1lk8.gz
 C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\compressed\xo1s40ofeh-s4rrew4mg0.gz
 C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\compressed\a55ukbdd4n-0v3cee31e3.gz
 C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\compressed\nuezrv1s1g-i9dvd2wxzk.gz
+C:\Users\PHOENIX\Desktop\BlazorEcommerce\BlazorEcommerce\BlazorEcommerce\obj\Debug\net9.0\BlazorEcommerce.sourcelink.json
+C:\Users\PHOENIX\Desktop\BlazorEcommerce\blazorEcommerce\blazorEcommerce\obj\Debug\net9.0\compressed\mnm5crxyve-7hx51fvt5s.gz
+C:\Users\PHOENIX\Desktop\BlazorEcommerce\blazorEcommerce\blazorEcommerce\obj\Debug\net9.0\compressed\hbxf1ihu1r-5a4qe9de2h.gz

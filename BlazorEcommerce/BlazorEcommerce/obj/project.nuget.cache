@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ExjroeUy68Y=",
+  "dgSpecHash": "E7vLqkzgYpo=",
   "success": true,
-  "projectFilePath": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce.csproj",
+  "projectFilePath": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\BlazorEcommerce.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PHOENIX\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\PHOENIX\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.3\\microsoft.aspnetcore.authentication.jwtbearer.9.0.3.nupkg.sha512",

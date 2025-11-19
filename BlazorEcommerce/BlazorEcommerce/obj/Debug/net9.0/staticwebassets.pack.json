@@ -1,271 +1,275 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\BlazorEcommerce.bundle.scp.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\BlazorEcommerce.bundle.scp.css",
       "PackagePath": "staticwebassets\\BlazorEcommerce.qt6bautvo6.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\Hero_bg.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Hero_bg.jpg",
       "PackagePath": "staticwebassets\\Hero_bg.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\MA7V4.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\MA7V4.jpg",
       "PackagePath": "staticwebassets\\MA7V4.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\MDGY4.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\MDGY4.jpg",
       "PackagePath": "staticwebassets\\MDGY4.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\MUW43.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\MUW43.jpg",
       "PackagePath": "staticwebassets\\MUW43.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\Scripts\\analytics.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Scripts\\analytics.js",
       "PackagePath": "staticwebassets\\Scripts\\analytics.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\Scripts\\carousel.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Scripts\\carousel.js",
       "PackagePath": "staticwebassets\\Scripts\\carousel.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\Scripts\\chart.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Scripts\\chart.js",
       "PackagePath": "staticwebassets\\Scripts\\chart.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\Scripts\\firebase-helper.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Scripts\\firebase-helper.js",
       "PackagePath": "staticwebassets\\Scripts\\firebase-helper.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\Scripts\\trafficChart.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Scripts\\serachBar.js",
+      "PackagePath": "staticwebassets\\Scripts\\serachBar.js"
+    },
+    {
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\Scripts\\trafficChart.js",
       "PackagePath": "staticwebassets\\Scripts\\trafficChart.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\airtag.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\airtag.jpg",
       "PackagePath": "staticwebassets\\airtag.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\app.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\appletv.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\appletv.jpg",
       "PackagePath": "staticwebassets\\appletv.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\cat2.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\cat2.jpg",
       "PackagePath": "staticwebassets\\cat2.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\def.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\def.jpg",
       "PackagePath": "staticwebassets\\def.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\ipadair.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\ipadair.jpg",
       "PackagePath": "staticwebassets\\ipadair.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\iphone16pro.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\iphone16pro.jpg",
       "PackagePath": "staticwebassets\\iphone16pro.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\macbookair.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\macbookair.jpg",
       "PackagePath": "staticwebassets\\macbookair.jpg"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\tailwindstyles.css",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\tailwindstyles.css",
       "PackagePath": "staticwebassets\\tailwindstyles.css"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\tradein.png",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\tradein.png",
       "PackagePath": "staticwebassets\\tradein.png"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\watchpride.png",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\watchpride.png",
       "PackagePath": "staticwebassets\\watchpride.png"
     },
     {
-      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\BlazorEcommerce\\BlazorEcommerce\\wwwroot\\watchs10.jpg",
+      "Id": "C:\\Users\\PHOENIX\\Desktop\\BlazorEcommerce\\blazorEcommerce\\blazorEcommerce\\wwwroot\\watchs10.jpg",
       "PackagePath": "staticwebassets\\watchs10.jpg"
     },
     {
